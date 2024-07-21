@@ -1,5 +1,6 @@
 package com.iamcal.playground.registries;
 
+import com.iamcal.playground.items.QuickBow;
 import com.iamcal.playground.items.SuspiciousSubstance;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
@@ -29,6 +30,10 @@ public class Items {
             new SuspiciousSubstance(new Item.Settings().food(SUSPICIOUS_FOOD_COMPONENT)), "suspicious_substance"
     );
 
+    public static final Item QUICK_BOW = register(
+            new QuickBow(new Item.Settings()), "quick_bow"
+    );
+
     public static Item register(Item item, String id) {
         Identifier itemID = Identifier.of(Playground.MOD_ID, id);
 
@@ -40,8 +45,9 @@ public class Items {
     public static void initialize() {
         // Get the event for modifying entries in the ingredients group.
         // And register an event handler that adds our suspicious item to the ingredients group.
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS)
-                .register((itemGroup) -> itemGroup.add(Items.SUSPICIOUS_SUBSTANCE));
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register((itemGroup) -> itemGroup.add(Items.SUSPICIOUS_SUBSTANCE));
+
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register((itemGroup) -> itemGroup.add(Items.QUICK_BOW));
 
         // Add the suspicious substance to the composting registry with a 30% chance of increasing the composter's level.
         CompostingChanceRegistry.INSTANCE.add(Items.SUSPICIOUS_SUBSTANCE, 0.3f);

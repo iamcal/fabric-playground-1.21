@@ -1,4 +1,6 @@
 {
   "item.playground.suspicious_substance": "Suspicious Substance",
-  "itemTooltip.playground.suspicious_substance": "This is a magical powder."
+  "item.playground.quick_bow": "Quick Bow",
+  "itemTooltip.playground.suspicious_substance": "This is a magical powder.",
+  "itemTooltip.playground.quick_bow": "Like a regular bow, but quicker."
 }
